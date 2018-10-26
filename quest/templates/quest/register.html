@@ -1,0 +1,29 @@
+{% extends 'quest/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="bottom-border mb4">Join Today</legend>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-default" type="Submit">Sign Up</button>
+			</div>
+		</form>
+		<div class="border-top pt-3">
+			<small class="text-muted">
+				Already have an account. <a class="ml-2" href="">Sign In</a>
+			</small>
+		</div>
+		<br>
+		{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+{% endblock %}
