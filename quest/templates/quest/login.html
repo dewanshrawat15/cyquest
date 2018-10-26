@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cyquest</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+</head>
+<style type="text/css">
+	
+.header{
+	padding: 42px 0 42px 0;
+	background: #13171c;
+}
+
+.header-title{
+	color: #fff;
+	font-family: 'Product Sans', sans-serif;
+	font-size: 42px;
+}
+
+.info{
+	padding: 100px 0 175px 0;
+}
+
+.info, a, a:hover, a:active, a:focus{
+	font-family: 'Product Sans', sans-serif;
+	font-size: 20px;
+	text-decoration: none!important;
+}
+
+</style>
+<body>
+<div class="header">
+	<div class="container">
+		<div class="col-md-4 header-title">Cyquest</div>
+	</div>
+</div>
+<div class="info">
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
+			<form method="POST" class="post-form">{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" class="save btn btn-default">Save</button>
+			</form>
+			<br><br>
+			{% for message in messages %}
+	            <div class="alert alert-danger">
+	                <a class="close" href="#" data-dismiss="alert">×</a>
+					{{ message }}
+				</div>
+            <br><br>
+            {% endfor %}
+			<p>New here? <a href="register">Register Here</a></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
