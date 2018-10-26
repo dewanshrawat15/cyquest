@@ -1,35 +1,14 @@
 from django import forms
-from .models import user
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
-# Register
-class reg_func(forms.ModelForm):
-
-	class Meta:
-		model = user
-		fields = ('name', 'email', 'username', 'password')
-
-	def __init__(self, *args, **kwargs):
-		super(reg_func, self).__init__(*args, **kwargs)
-		self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': 'Enter Password'})
-		self.fields['name'].widget.attrs['class'] = 'form-control'
-		self.fields['name'].widget.attrs['placeholder'] = 'Enter Name'
-		self.fields['email'].widget.attrs['class'] = 'form-control'
-		self.fields['email'].widget.attrs['placeholder'] = 'Enter Email'
-		self.fields['username'].widget.attrs['class'] = 'form-control'
-		self.fields['username'].widget.attrs['placeholder'] = 'Enter Username'
-		self.fields['password'].widget.attrs['class'] = 'form-control'
-
-
-# Login
-class login_func(forms.ModelForm):
+class UserRegisterForm(UserCreationForm):
+	email = forms.EmailField()
 
 	class Meta:
-		model = user
-		fields = ('username', 'password')
+		model = User
+		fields = ['username', 'email', 'password1', 'password2']
 
-	def __init__(self, *args, **kwargs):
-		super(login_func, self).__init__(*args, **kwargs)
-		self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': 'Enter Password'})
-		self.fields['username'].widget.attrs['class'] = 'form-control'
-		self.fields['username'].widget.attrs['placeholder'] = 'Enter Username'
-		self.fields['password'].widget.attrs['class'] = 'form-control'
+	# if email and User.objects.filter(email=email).exclude(username=username).exists():
+ #            raise forms.ValidationError(u'Email addresses must be unique.')
+ #        return email
