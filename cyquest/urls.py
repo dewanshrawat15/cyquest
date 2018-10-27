@@ -25,5 +25,6 @@ urlpatterns = [
     # path('logout/', auth_views.LogoutView.as_view(template_name='quest/logout.html'), name='logout'),
     path('welcome/', quest_view.welcome, name='welcome'),
     path('profile/', quest_view.profile, name='profile'),
+    path('question/', quest_view.question, name='question'),
     path('', quest_view.home, name='home')
 ]

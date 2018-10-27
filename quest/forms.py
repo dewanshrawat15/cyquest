@@ -1,4 +1,7 @@
 from django import forms
+from django.db import models
+from django.utils import timezone
+from .models import Question
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -6,6 +9,9 @@ class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
 	first_name = forms.CharField(max_length=30)
 	last_name = forms.CharField(max_length=30)
+	# question = forms.IntegerField()
+	# solved_date = models.DateTimeField(
+		# default=timezone.now)
 
 	class Meta:
 		model = User
@@ -18,3 +24,9 @@ class UserRegisterForm(UserCreationForm):
 		if email and User.objects.filter(email=email).exclude(username=username).count():
 			raise forms.ValidationError(("This email address is already in use. Please supply a different email address."))
 		return email
+
+class QuestionForm(forms.ModelForm):
+
+    class Meta:
+        model = Question
+        fields = ('question', 'answer')
