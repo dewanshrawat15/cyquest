@@ -11,15 +11,16 @@ def welcome(request):
 	return render(request, 'quest/welcome.html', {})
 
 def register(request):
+	args = {}
 	if request.method == 'POST':
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			email = form.cleaned_data.get('email')
 			messages.success(request, f'Account created for { username }!')
 			return redirect('welcome')
 
 	else:
 		form = UserRegisterForm()
-	return render(request, 'quest/register.html', {'form': form})
+	args['form'] = form
+	return render(request, 'quest/register.html', {'form': form}, args)
