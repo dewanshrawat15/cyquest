@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, QuestionForm
+from .models import Question
 # Create your views here.
 
 def home(request):
@@ -29,3 +30,29 @@ def register(request):
 		form = UserRegisterForm()
 	args['form'] = form
 	return render(request, 'quest/register.html', {'form': form}, args)
+
+# def question(request):
+# 	if request.method == 'POST':
+# 		form = QuestionForm(request.POST)
+# 		if form.is_valid():
+# 			Question = form.save(commit=False)
+# 			Question.save()
+# 			messages.success(request, f'Question Saved { username }!')
+# 			return redirect('question')
+# 	else:
+# 		form = QuestionForm()
+# 	return render(request, 'quest/question.html', {'form': form})
+
+@login_required
+def question(request):
+	if request.method == 'POST':
+		form = QuestionForm(request.POST)
+		if form.is_valid():
+			Question = form.save(commit=False)
+			Question.save()
+			messages.success(request, f'Question Saved!')
+			return redirect('question')
+
+	else:
+		form = QuestionForm()
+	return render(request, 'quest/question.html', {'form': form})
