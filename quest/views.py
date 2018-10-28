@@ -45,3 +45,19 @@ def question(request):
 	else:
 		form = QuestionForm()
 	return render(request, 'quest/question.html', {'form': form})
+
+# @login_required
+# def dashboard(request):
+# 	args = {}
+# 	if request.method == 'POST':
+# 		form = UserRegisterForm(request.POST)
+# 		if form.is_valid():
+# 			form.save()
+# 			username = form.cleaned_data.get('username')
+# 			messages.success(request, f'Account created for { username }!')
+# 			return redirect('welcome')
+
+# 	else:
+# 		form = UserRegisterForm()
+# 	args['form'] = form
+# 	return render(request, 'quest/register.html', {'form': form}, args)
