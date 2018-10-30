@@ -9,6 +9,7 @@ Any system with python 3 (preferably 3.6) and terminal.
 
 # Usage
 - Navigate to the cloned repository.
+- Run pip install -r requirements.txt
 - Run python manage.py runserver
 
 # Working On
