@@ -18,7 +18,7 @@ Currently trying to setup a dashboard, a leaderboard, and trying to improve the 
 None as of now. Feel free to open an issue if any!
 
 # Wanna Contribute ?
-Yeah, sure, why not. Just be sure to connect with me at [dewanshrawat.me](dewanshrawat.me)
+Yeah, sure, why not. Just be sure to connect with me at [dewanshrawat.me](https://dewanshrawat.me)
 
 # License
 > The MIT License
