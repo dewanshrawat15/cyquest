@@ -19,6 +19,7 @@
 }
 .info{
 	padding: 100px 0 175px 0;
+	margin-bottom: 100px;
 }
 .info p, a, a:hover, a:active, a:focus{
 	font-family: 'Product Sans', sans-serif;
@@ -40,6 +41,21 @@ li a:hover, li a:visited, li a:active{
 	background: transparent!important;
 	font-size: 18px!important;
 }
+
+.footer{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 20px;
+	font-family: 'Product Sans', sans-serif;
+	color: #fff;
+	background: #13171c;
+}
+
+.author, .author:hover, .author:visited, .author:active{
+	color: #fff!important;
+	text-decoration: none!important;
+}
+
 </style>
 <body>
 <div class="header">
@@ -54,8 +70,8 @@ li a:hover, li a:visited, li a:active{
 					<li><a href="{% url 'play' %)">Quest</a></li>
 					<li><a href="{% url 'logout' %}">Logout</a></li>
 				{% else %}
-					<li><a href="{% url 'play' %)">Quest</a></li>
-					<li><a href="{% url 'faq' %)">FAQ</a></li>
+					<li><a href="{% url 'login' %}">Login</a></li>
+					<li><a href="{% url 'faq' %}">FAQ</a></li>
 				{% endif %}
 				</ul>
 
@@ -68,6 +84,14 @@ li a:hover, li a:visited, li a:active{
 		<div class="col-md-6 col-md-offset-3">
 			{% block content %}
 			{% endblock %}
+		</div>
+	</div>
+</div>
+<br>
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8 text-center">Made with by <a href="https://dewanshrawat.me" class="author">Dewansh Rawat</a></div>
 		</div>
 	</div>
 </div>

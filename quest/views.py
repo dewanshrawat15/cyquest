@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from .forms import UserRegisterForm, QuestionForm
@@ -9,8 +8,8 @@ from .models import Question
 def home(request):
 	return render(request, 'quest/home.html', {})
 
-def welcome(request):
-	return render(request, 'quest/welcome.html', {})
+def faq(request):
+	return render(request, 'quest/faq.html', {})
 
 @login_required
 def profile(request):

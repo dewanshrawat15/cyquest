@@ -21,9 +21,9 @@ from quest import views as quest_view
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('register/', quest_view.register, name='register'),
+	path('faq/', quest_view.faq, name='faq'),
 	path('login/', auth_views.LoginView.as_view(template_name='quest/login.html'), name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='quest/logout.html'), name='logout'),
-	path('welcome/', quest_view.welcome, name='welcome'),
 	path('profile/', quest_view.profile, name='profile'),
 	path('question/', quest_view.question, name='question'),
 	path('', quest_view.home, name='home')
