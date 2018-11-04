@@ -65,9 +65,8 @@ li a:hover, li a:visited, li a:active{
 			<div class="col-md-5 col-md-offset-3 links-holder">
 				<ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
-					<li><a href="{% url 'dashboard' %)">Dashboard</a></li>
-					<li><a href="{% url 'leaderboard' %)">Leaderboard</a></li>
-					<li><a href="{% url 'play' %)">Quest</a></li>
+					<li><a href="{% url 'profile' %}">Profile</a></li>
+					<li><a href="{% url 'faq' %}">FAQ</a></li>
 					<li><a href="{% url 'logout' %}">Logout</a></li>
 				{% else %}
 					<li><a href="{% url 'login' %}">Login</a></li>
@@ -79,19 +78,24 @@ li a:hover, li a:visited, li a:active{
 		</div>
 	</div>
 </div>
-<div class="info">
-	<div class="container">
-		<div class="col-md-6 col-md-offset-3">
-			{% block content %}
-			{% endblock %}
+{% if request.path != '/profile/' %}
+	<div class="info">
+		<div class="container">
+			<div class="col-md-6 col-md-offset-3">
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
 	</div>
-</div>
+{% else %}
+	{% block main %}
+	{% endblock %}
+{% endif %}
 <br>
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-offset-2 col-md-8 text-center">Made with by <a href="https://dewanshrawat.me" class="author">Dewansh Rawat</a></div>
+			<div class="col-md-offset-2 col-md-8 text-center">Made with &#9825; by <a href="https://dewanshrawat.me" class="author">Dewansh Rawat</a></div>
 		</div>
 	</div>
 </div>

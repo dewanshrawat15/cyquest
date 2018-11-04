@@ -25,6 +25,9 @@ class User_Self(UserCreationForm):
 			raise forms.ValidationError(("This email address is already in use. Please supply a different email address."))
 		return email
 
+	def save(self):
+		self.save()
+
 
 class Question(models.Model):
 	# author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
