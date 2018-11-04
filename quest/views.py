@@ -15,6 +15,10 @@ def faq(request):
 def profile(request):
 	return render(request, 'quest/profile.html', {})
 
+@login_required
+def edit(request):
+	return render(request, 'quest/edit.html', {})
+
 def register(request):
 	args = {}
 	if request.method == 'POST':
@@ -23,7 +27,7 @@ def register(request):
 			form.save()
 			username = form.cleaned_data.get('username')
 			messages.success(request, f'Account created for { username }!')
-			return redirect('welcome')
+			return redirect('profile')
 
 	else:
 		form = UserRegisterForm()
