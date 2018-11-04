@@ -1,7 +1,29 @@
 {% extends 'quest/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<p>Welcome {{ user.username }}</p>
-	<br>
-	<p><a class="ml-2" href="{% url 'logout' %}">Logout</a></p>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+	
+	h2, h3{
+		font-family: 'Product Sans', sans-serif;
+	}
+
+	.edit-link{
+		font-size: 16px;
+		color: #13171c;
+	}
+
+	a, a:hover, a:visited, a:active{
+		text-decoration: none;
+		padding-left: 12px;
+		color: #13171c;
+	}
+
+</style>
+<h2>Welcome <span class="imp">{{ user.username }}</span><a href="{% url 'edit' %}"><i class="fa fa-pencil edit-link"></i></a></h2>
+<br>
+<h3>First Name: <span class="imp">{{ user.first_name }}</span><a href="{% url 'edit' %}"><i class="fa fa-pencil edit-link"></i></a></h3>
+<h3>Last Name: <span class="imp">{{ user.last_name }}</span><a href="{% url 'edit' %}"><i class="fa fa-pencil edit-link"></i></a></h3>
+<h3>Email: <span class="imp">{{ user.email }}</span><a href="{% url 'edit' %}"><i class="fa fa-pencil edit-link"></i></a></h3>
+<h3>Question: <span class="imp">{{ user.question }}</span><a href="{% url 'edit' %}"><i class="fa fa-pencil edit-link"></i></a></h3>
 {% endblock content%}
