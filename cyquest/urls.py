@@ -26,7 +26,7 @@ urlpatterns = [
 	path('login/', auth_views.LoginView.as_view(template_name='quest/login.html'), name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='quest/logout.html'), name='logout'),
 	path('profile/', quest_view.profile, name='profile'),
-	path('profile/change-password/', quest_view.change_password, name='change_password'),
+	path('change-password/', quest_view.change_password, name='change_password'),
 	path('question/', quest_view.question, name='question'),
 	path('', quest_view.home, name='home')
 ]

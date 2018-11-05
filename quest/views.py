@@ -30,16 +30,24 @@ def edit(request):
 		form = EditProfile(instance = request.user)
 	return render(request, 'quest/edit.html', {'form': form})
 
+@login_required
 def change_password(request):
-	if request.method == 'POST':
-		form = PasswordChangeForm(request.POST, instance = request.user)
-		if form.is_valid():
-			user = form.save()
-			return redirect('profile')
-
-	else:
-		form = PasswordChangeForm(instance = request.user)
-	return render(request, 'quest/password_change.html.html', {'form': form})
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    response = render(request, 'quest/password_change.html', {
+        'form': form
+    })
+    response.set_cookie('password_changed', 'true')
+    return response 
 
 def register(request):
 	args = {}
