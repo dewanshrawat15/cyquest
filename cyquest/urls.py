@@ -22,10 +22,11 @@ urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('register/', quest_view.register, name='register'),
 	path('faq/', quest_view.faq, name='faq'),
-	path('edit/', quest_view.edit, name='edit'),
+	path('profile/edit/', quest_view.edit, name='edit'),
 	path('login/', auth_views.LoginView.as_view(template_name='quest/login.html'), name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='quest/logout.html'), name='logout'),
 	path('profile/', quest_view.profile, name='profile'),
+	path('change-password/', quest_view.change_password, name='change_password'),
 	path('question/', quest_view.question, name='question'),
 	path('', quest_view.home, name='home')
 ]
