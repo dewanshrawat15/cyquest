@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quest.apps.QuestConfig',
+    'quiz',
     'crispy_forms'
 ]
 
@@ -124,4 +125,4 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'quiz'

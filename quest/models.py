@@ -25,16 +25,3 @@ class User_Self(UserCreationForm):
 		if email and User.objects.filter(email=email).exclude(username=username).count():
 			raise forms.ValidationError(("This email address is already in use. Please supply a different email address."))
 		return email
-
-
-class Question(models.Model):
-	# author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-	question = models.CharField(max_length=200)
-	answer = models.CharField(max_length=32)
-
-	def publish(self):
-		# self.published_date = timezone.now()
-		self.save()
-
-	def __str__(self):
-		return self.question

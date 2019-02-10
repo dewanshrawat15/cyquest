@@ -1,0 +1,30 @@
+{% extends 'quest/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		{% if list %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Username</th>
+						<th>Points</th>
+						<th>Last Solved</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in list %}
+						<tr>
+							<td>{{ i.name }}</td>
+							<td>{{ i.username }}</td>
+							<td>{{ i.points }}</td>
+							<td>{{ i.time }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+		<h2>It's Pretty Blank here</h2>
+		{% endif %}
+	</div>
+{% endblock %}
