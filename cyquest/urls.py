@@ -31,4 +31,5 @@ urlpatterns = [
 	path('question/', quiz_view.question, name='question'),
 	path('', quest_view.home, name='home'),
 	path('quiz/', quiz_view.quiz, name='quiz'),
+	path('leaderboard/', quiz_view.leaderboard, name='leaderboard'),
 ]

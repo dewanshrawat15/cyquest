@@ -68,10 +68,12 @@ li a:hover, li a:visited, li a:active{
 						<li><a href="{% url 'quiz' %}">Play</a></li>
 						<li><a href="{% url 'profile' %}">Profile</a></li>
 						<li><a href="{% url 'faq' %}">FAQ</a></li>
+						<li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
 						<li><a href="{% url 'logout' %}">Logout</a></li>
 					{% else %}
 						<li><a href="{% url 'login' %}">Login</a></li>
 						<li><a href="{% url 'faq' %}">FAQ</a></li>
+						<li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
 					{% endif %}
 				</ul>
 

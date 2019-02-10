@@ -29,5 +29,5 @@ class stud(models.Model):
 	def lqlpoints(self, score):
 		self.points = self.points + score
 		self.lql = self.lql + 1
-		time = timezone.now
+		self.time = timezone.now()
 		self.save()

@@ -5,7 +5,7 @@ class QuestionForm(forms.ModelForm):
 	
 	class Meta:
 		model = Question
-		fields = ('question', 'answer')
+		fields = ('question', 'answer', 'points',)
 
 class PlayForm(forms.ModelForm):
 

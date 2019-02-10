@@ -29,14 +29,6 @@ def quiz(request):
 		if form.is_valid():
 			answer = form.cleaned_data['answer']
 			temp_username = request.user.username
-			try:
-				temp_stud = stud.objects.get(username=temp_username)
-			except stud.DoesNotExist:
-				temp_stud = False
-			if not temp_stud:
-				temp_user = User.objects.get(username=temp_username)
-				stud.objects.create(name=temp_user.first_name, username=temp_username)
-			
 			temp_stud = stud.objects.get(username=temp_username)
 			level = temp_stud.lql
 			ans = Question.objects.get(pk=level)
@@ -44,6 +36,25 @@ def quiz(request):
 			points = ans.points
 			if answ == answer:
 				temp_stud.lqlpoints(points)
+			form.save()
+			obs = Answer.objects.all()
+			obs.delete()
+			return redirect(quiz)
 	else:
 		form = PlayForm()
-	return render(request, 'quiz/question.html', {'form': form})
+	req = request.user.username
+	try:
+		temp_stud = stud.objects.get(username=req)
+	except stud.DoesNotExist:
+		temp_stud = False
+	if not temp_stud:
+		temp_user = User.objects.get(username=req)
+		stud.objects.create(name=temp_user.first_name, username=req)
+	temp_stud = stud.objects.get(username=req)
+	lvl = temp_stud.lql
+	ask = Question.objects.get(pk=lvl)
+	return render(request, 'quiz/question.html', {'form': form, 'ask': ask})
+
+def leaderboard(request):
+	stud_list = stud.objects.all().order_by('-points')
+	return render(request, 'quiz/leaderboard.html', {'list': stud_list})
