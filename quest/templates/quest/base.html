@@ -62,16 +62,17 @@ li a:hover, li a:visited, li a:active{
 	<div class="container">
 		<div class="row">
 			<a href="{% url 'home' %}"><div class="col-md-4 header-title">Cyquest</div></a>
-			<div class="col-md-5 col-md-offset-3 links-holder">
+			<div class="col-md-6 col-md-offset-2 links-holder">
 				<ul class="nav navbar-nav navbar-right">
-				{% if user.is_authenticated %}
-					<li><a href="{% url 'profile' %}">Profile</a></li>
-					<li><a href="{% url 'faq' %}">FAQ</a></li>
-					<li><a href="{% url 'logout' %}">Logout</a></li>
-				{% else %}
-					<li><a href="{% url 'login' %}">Login</a></li>
-					<li><a href="{% url 'faq' %}">FAQ</a></li>
-				{% endif %}
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'quiz' %}">Play</a></li>
+						<li><a href="{% url 'profile' %}">Profile</a></li>
+						<li><a href="{% url 'faq' %}">FAQ</a></li>
+						<li><a href="{% url 'logout' %}">Logout</a></li>
+					{% else %}
+						<li><a href="{% url 'login' %}">Login</a></li>
+						<li><a href="{% url 'faq' %}">FAQ</a></li>
+					{% endif %}
 				</ul>
 
 			</div>

@@ -1,0 +1,17 @@
+{% extends 'quest/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="bottom-border mb4">Level</legend>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-default" type="Submit">Save</button>
+			</div>
+		</form>
+		<br>
+	</div>
+{% endblock %}
