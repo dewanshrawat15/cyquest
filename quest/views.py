@@ -47,7 +47,6 @@ def change_password(request):
     return response 
 
 def register(request):
-	args = {}
 	if request.method == 'POST':
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
@@ -58,5 +57,4 @@ def register(request):
 
 	else:
 		form = UserRegisterForm()
-	args['form'] = form
-	return render(request, 'quest/register.html', {'form': form}, args)
+	return render(request, 'quest/register.html', {'form': form})
