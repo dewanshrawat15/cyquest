@@ -51,9 +51,12 @@ def quiz(request):
 		temp_user = User.objects.get(username=req)
 		stud.objects.create(name=temp_user.first_name, username=req)
 	temp_stud = stud.objects.get(username=req)
-	lvl = temp_stud.lql
-	ask = Question.objects.get(pk=lvl)
-	return render(request, 'quiz/question.html', {'form': form, 'ask': ask})
+	try:
+		lvl = temp_stud.lql
+		ask = Question.objects.get(pk=lvl)
+		return render(request, 'quiz/question.html', {'form': form, 'ask': ask})
+	except:
+		return render(request, 'quiz/result.html', {'points': temp_stud.points})
 
 def leaderboard(request):
 	stud_list = stud.objects.all().order_by('-points')
